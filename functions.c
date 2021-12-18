@@ -2,6 +2,8 @@
 #include <string.h>
 #define TXT 1024
 #define WORD 30
+#define SPACE 32
+#define TILDA 126
 
 //bee I'm bringing home my baby bumble bee Won't my Mommy be so proud of me i'm bringing home my baby bumble bee-OUCH!! it stung me!!~
 
@@ -48,7 +50,7 @@ void func3(char* wordArr, char* textArr, int wordLength) {
         i++;
         word_p++;
     }
-    sortedword[i] = 126;
+    sortedword[i] = TILDA;
     sort(sortedword);
     while (text_p < textArr+1024-wordLength) {
         int counter = wordLength-1;
@@ -57,7 +59,7 @@ void func3(char* wordArr, char* textArr, int wordLength) {
         char temp[WORD] = {*text_p};
         char* sequence_p = text_p+1;
         while (counter > 0) {
-            if (*sequence_p == 32) {
+            if (*sequence_p == SPACE) {
                 spacecounter++;
                 sequence_p++;
             } else {
@@ -67,13 +69,13 @@ void func3(char* wordArr, char* textArr, int wordLength) {
                 counter--;
             } 
         }  
-        i=j;
-        for (;i<WORD; i++) {
-            temp[i] = 126;
+        i = j;
+        for (; i < WORD; i++) {
+            temp[i] = TILDA;
         }
         sort(temp);
         int isSequence = 1;
-        for (int k=0; k<wordLength; k++) {
+        for (int k = 0; k < wordLength; k++) {
             if (temp[k] != sortedword[k]) {
                 isSequence = 0;
                 break;
@@ -101,13 +103,13 @@ void func2(char* wordArr, char* textArr, int wordLength) {
     printf("Atbash Sequences: ");
     int first_letter = reversed_value(charToInt(wordArr));
     int last_letter = reversed_value(charToInt(wordArr+wordLength-1));
-    while (textArr_p < textArr+1024) {
+    while (textArr_p < textArr+TXT) {
         int temp_char = charToInt(textArr_p);
         if (temp_char == first_letter) {
             char* textArr_p2 = textArr_p+1;
             int counter = 1;
             int space_counter = 0;
-            while (textArr_p2 < textArr+1024) {
+            while (textArr_p2 < textArr+TXT) {
                 int temp_int = charToInt(textArr_p2);
                 if (temp_int == 0) {
                     space_counter++;
@@ -137,7 +139,7 @@ void func2(char* wordArr, char* textArr, int wordLength) {
             char* textArr_p2 = textArr_p+1;
             int counter = wordLength-2;
             int space_counter = 0;
-            while (textArr_p2 < textArr+1024) {
+            while (textArr_p2 < textArr+TXT) {
                 int temp_int = charToInt(textArr_p2);
                 if (temp_int == 0) {
                     space_counter++;
@@ -179,7 +181,7 @@ void func1(char *wordArr, char *textArr) {
         sum = sum + charToInt(wordArr_p++);
     }
     wordArr_p = wordArr;
-    while(textArr_p < textArr+1024) {
+    while(textArr_p < textArr+TXT) {
         if (charToInt(textArr_p) == sum) {
             if (isFirstTime == 0) {
                 printf("~");
@@ -190,7 +192,7 @@ void func1(char *wordArr, char *textArr) {
         if (charToInt(textArr_p) < sum && charToInt(textArr_p) != 0) {
             int tempsum = charToInt(textArr_p);
             char* textArr_p2 = textArr_p+1;
-            while (textArr_p2 < textArr+1024) {
+            while (textArr_p2 < textArr+TXT) {
                 tempsum = tempsum + charToInt(textArr_p2);
                 if (tempsum > sum) {
                     break;

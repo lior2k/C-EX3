@@ -73,10 +73,7 @@ void func3(char* wordArr, char* textArr, int wordLength) {
         }
         sort(temp);
         int isSequence = 1;
-        for (int k=0; k<WORD; k++) {
-            if (temp[k] == 126) {
-                break;
-            }
+        for (int k=0; k<wordLength; k++) {
             if (temp[k] != sortedword[k]) {
                 isSequence = 0;
                 break;

@@ -5,8 +5,6 @@
 #define SPACE 32
 #define TILDA 126
 
-//bee I'm bringing home my baby bumble bee Won't my Mommy be so proud of me i'm bringing home my baby bumble bee-OUCH!! it stung me!!~
-
 //for any letter {a,b,....,z} return ascii value -96 -> a=1, b=2, ... , z=26.
 //for any capital letter same as above but -64, A=1, B=2, ... , Z=26.
 //for any other character return 0.
